@@ -5,11 +5,11 @@
              x:Class="BMICalculator.MainPage"
              Shell.NavBarIsVisible="False">
 
-    <Grid RowDefinitions="*, Auto">
+    <Grid RowDefinitions="*, Auto, Auto">
         <Border Grid.Row="0"
                 Padding="20"
                 StrokeThickness="0"
-                StrokeShape="RoundRectangle 0, 0, 25, 25">
+                StrokeShape="RoundRectangle 0, 0, 0,0">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#ea6c5d"
@@ -132,15 +132,83 @@
                         Value="68"
                         />
 
-                
-                
             </VerticalStackLayout>
             
         </Border>
+
+        <Grid Grid.Row="1"
+              Margin="0, -75, 0, 0">
+            <Border Grid.Row="1"
+                Padding="25"
+                StrokeShape="RoundRectangle 50, 50, 0, 0"
+                StrokeThickness="0"
+                BackgroundColor="White"
+                Margin="0, 0, 0, 0"
+                >
+                <Border.Shadow>
+                    <Shadow Brush="#ea6c5d"
+                        Radius="100"
+                        Offset="-150, -150"/>
+                </Border.Shadow>
+            </Border>
+            
+            <ImageButton Grid.Row="1"
+                Source="right_arrow"
+                HeightRequest="150"
+                WidthRequest="150"
+                CornerRadius="55"
+                BackgroundColor="White"
+                Padding="20"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="0, -75, 0, 0"
+                         Pressed="CalculateBMI_Pressed"
+                             >
+                <ImageButton.Shadow>
+                    <Shadow Brush="#f2a59e"
+                        Radius="55"
+                        Offset="5, 5"/>
+                </ImageButton.Shadow>
+
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#e95263" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </Grid>
         
-        <VerticalStackLayout Grid.Row="1"
-                             Padding="25">
-            <Label Text="Test"/>
+        
+        
+        <!--<ImageButton Grid.Row="1"
+                Source="right_arrow"
+                HeightRequest="150"
+                WidthRequest="150"
+                CornerRadius="55"
+                BackgroundColor="White"
+                Padding="20"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                     Margin="0, -75, 0, 0"
+                             >
+            <ImageButton.Shadow>
+                <Shadow Brush="#f2a59e"
+                        Radius="55"
+                        Offset="5, 5"/>
+            </ImageButton.Shadow>
+
+            <ImageButton.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="#e95263" />
+            </ImageButton.Behaviors>
+            
+        </ImageButton>-->
+
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="25"
+                             Spacing="20">
+            <Label Text="Body mass index, or BMI, is used to determine whether you are in a healthy weight range for your height."
+                   />
+            <Label Text="* This calculator should't be used for pregnent women or children."
+                   FontSize="12"
+                   FontAttributes="Italic"/>
         </VerticalStackLayout>
     </Grid>
 
