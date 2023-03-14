@@ -37,7 +37,7 @@
                                                Spacing="10">
                             <Image Source="male"
                                    HeightRequest="20"
-                                   WidthRequest="20">
+                                   WidthRequest="{OnPlatform 20, iOS=25}">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#e95263" />
                                 </Image.Behaviors>
@@ -56,8 +56,8 @@
                         <HorizontalStackLayout HorizontalOptions="Center"
                                                Spacing="10">
                             <Image Source="female"
-                                   HeightRequest="20"
-                                   WidthRequest="20">
+                                   HeightRequest="{OnPlatform 20}"
+                                   WidthRequest="{OnPlatform 20, iOS=40}">
                                 <Image.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="White" />
                                 </Image.Behaviors>
@@ -88,6 +88,7 @@
                        TextColor="White"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"
+                       Padding="5"
                        />
                 </Border>
 
@@ -120,6 +121,7 @@
                        TextColor="White"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"
+                       Padding="5"
                        />
                 </Border>
 
@@ -136,8 +138,15 @@
             
         </Border>
 
-        <Grid Grid.Row="1"
-              Margin="0, -75, 0, 0">
+        <Grid Grid.Row="1">
+
+            <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0, -75, 0, 0"/>
+                        <On Platform="iOS" Value="0, -60, 0, 0"/>
+                    </OnPlatform>
+                </Grid.Margin>
+
             <Border Grid.Row="1"
                 Padding="25"
                 StrokeShape="RoundRectangle 50, 50, 0, 0"
@@ -154,19 +163,25 @@
             
             <ImageButton Grid.Row="1"
                 Source="right_arrow"
-                HeightRequest="150"
-                WidthRequest="150"
-                CornerRadius="55"
+                HeightRequest="{OnPlatform 150, iOS=120}"
+                WidthRequest="{OnPlatform 150, iOS=120}"
+                CornerRadius="{OnPlatform 55, iOS=60}"
                 BackgroundColor="White"
                 Padding="20"
                 VerticalOptions="End"
                 HorizontalOptions="End"
-                Margin="0, -75, 0, 0"
                          Pressed="CalculateBMI_Pressed"
                              >
+                <ImageButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0, -75, 0, 0"/>
+                        <On Platform="iOS" Value="0, -60, 20, 0"/>
+                    </OnPlatform>
+                </ImageButton.Margin>
+
                 <ImageButton.Shadow>
                     <Shadow Brush="#f2a59e"
-                        Radius="55"
+                        Radius="{OnPlatform 55, iOS=60}"
                         Offset="5, 5"/>
                 </ImageButton.Shadow>
 
