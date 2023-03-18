@@ -9,11 +9,13 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    private void CalculateBMI_Pressed(object sender, EventArgs e)
+    private async void CalculateBMI_Pressed(object sender, EventArgs e)
     {
         var heightInMeter = heightSlider.Value * 100;
         var weightInKg = weightSlider.Value;
 
         var bmi = weightInKg / (heightInMeter * heightInMeter);
+
+        Shell.Current.DisplayAlert("BMI", $"Bmi is {bmi}", "Ok");
     }
 }

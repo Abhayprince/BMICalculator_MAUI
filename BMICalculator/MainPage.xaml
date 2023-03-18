@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:BMICalculator.Controls"
              x:Class="BMICalculator.MainPage"
              Shell.NavBarIsVisible="False">
 
@@ -28,45 +29,17 @@
 
                 <Grid ColumnDefinitions="*, *"
                       ColumnSpacing="15">
-                    <Border Grid.Column="0"
-                            BackgroundColor="White"
-                            StrokeShape="RoundRectangle 25"
-                            Padding="20, 10"                            
-                            StrokeThickness="0">
-                        <HorizontalStackLayout HorizontalOptions="Center"
-                                               Spacing="10">
-                            <Image Source="male"
-                                   HeightRequest="20"
-                                   WidthRequest="{OnPlatform 20, iOS=25}">
-                                <Image.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="#e95263" />
-                                </Image.Behaviors>
-                            </Image>
-                            <Label Text="Male"
-                                   FontAttributes="Bold"
-                                   TextColor="#e95263"/>
-                        </HorizontalStackLayout>
-                    </Border>
-
-                    <Border Grid.Column="1"
-                            BackgroundColor="#f2a59e"
-                            StrokeShape="RoundRectangle 25"
-                            Padding="20, 10"
-                            StrokeThickness="0">
-                        <HorizontalStackLayout HorizontalOptions="Center"
-                                               Spacing="10">
-                            <Image Source="female"
-                                   HeightRequest="{OnPlatform 20}"
-                                   WidthRequest="{OnPlatform 20, iOS=40}">
-                                <Image.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="White" />
-                                </Image.Behaviors>
-                            </Image>
-                            <Label Text="Female"
-                                   FontAttributes="Bold"
-                                   TextColor="White"/>
-                        </HorizontalStackLayout>
-                    </Border>
+                    <controls:GenderControl Grid.Column="0" 
+                                            IconImageSource="male" 
+                                            Text="Male" 
+                                            Color="#e95263"
+                                            BgColor="#ffffff"/>
+                    
+                    <controls:GenderControl Grid.Column="1" 
+                                            IconImageSource="female" 
+                                            Text="Female" 
+                                            Color="#ffffff"
+                                            BgColor="#f2a59e"/>
                 </Grid>
 
                 <Label Text="HEIGHT"
@@ -160,62 +133,13 @@
                         Offset="-150, -150"/>
                 </Border.Shadow>
             </Border>
-            
-            <ImageButton Grid.Row="1"
-                Source="right_arrow"
-                HeightRequest="{OnPlatform 150, iOS=120}"
-                WidthRequest="{OnPlatform 150, iOS=120}"
-                CornerRadius="{OnPlatform 55, iOS=60}"
-                BackgroundColor="White"
-                Padding="20"
-                VerticalOptions="End"
-                HorizontalOptions="End"
-                         Pressed="CalculateBMI_Pressed"
-                             >
-                <ImageButton.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="Android" Value="0, -75, 0, 0"/>
-                        <On Platform="iOS" Value="0, -60, 20, 0"/>
-                    </OnPlatform>
-                </ImageButton.Margin>
 
-                <ImageButton.Shadow>
-                    <Shadow Brush="#f2a59e"
-                        Radius="{OnPlatform 55, iOS=60}"
-                        Offset="5, 5"/>
-                </ImageButton.Shadow>
-
-                <ImageButton.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="#e95263" />
-                </ImageButton.Behaviors>
-            </ImageButton>
+            <controls:BmiButtonControl Grid.Row="1"
+                                       IconImageSource="right_arrow"
+                                       ButtonPressed="CalculateBMI_Pressed"
+                                       />
         </Grid>
         
-        
-        
-        <!--<ImageButton Grid.Row="1"
-                Source="right_arrow"
-                HeightRequest="150"
-                WidthRequest="150"
-                CornerRadius="55"
-                BackgroundColor="White"
-                Padding="20"
-                VerticalOptions="End"
-                HorizontalOptions="End"
-                     Margin="0, -75, 0, 0"
-                             >
-            <ImageButton.Shadow>
-                <Shadow Brush="#f2a59e"
-                        Radius="55"
-                        Offset="5, 5"/>
-            </ImageButton.Shadow>
-
-            <ImageButton.Behaviors>
-                <toolkit:IconTintColorBehavior TintColor="#e95263" />
-            </ImageButton.Behaviors>
-            
-        </ImageButton>-->
-
         <VerticalStackLayout Grid.Row="2"
                              Padding="25"
                              Spacing="20">
