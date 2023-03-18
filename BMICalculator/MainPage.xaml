@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:controls="clr-namespace:BMICalculator.Controls"
+             xmlns:local="clr-namespace:BMICalculator"
              x:Class="BMICalculator.MainPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             x:DataType="local:BmiViewModel">
 
     <Grid RowDefinitions="*, Auto, Auto">
         <Border Grid.Row="0"
@@ -72,6 +74,7 @@
                         Maximum="250"
                         Minimum="10"
                         Value="170"
+                        IsEnabled="{Binding IsNotCalculated}"
                         />
 
 
@@ -105,6 +108,7 @@
                         Maximum="150"
                         Minimum="10"
                         Value="68"
+                        IsEnabled="{Binding IsNotCalculated}"
                         />
 
             </VerticalStackLayout>
@@ -137,17 +141,41 @@
             <controls:BmiButtonControl Grid.Row="1"
                                        IconImageSource="right_arrow"
                                        ButtonPressed="CalculateBMI_Pressed"
+                                       IsVisible="{Binding IsNotCalculated}"
+                                       />
+            
+            <controls:BmiButtonControl Grid.Row="1"
+                                       IconImageSource="reset"
+                                       ButtonPressed="ResetBMI_Pressed"
+                                       IsVisible="{Binding IsCalculated}"
                                        />
         </Grid>
         
         <VerticalStackLayout Grid.Row="2"
                              Padding="25"
-                             Spacing="20">
+                             Spacing="20"
+                             IsVisible="{Binding IsNotCalculated}">
             <Label Text="Body mass index, or BMI, is used to determine whether you are in a healthy weight range for your height."
                    />
             <Label Text="* This calculator should't be used for pregnent women or children."
                    FontSize="12"
                    FontAttributes="Italic"/>
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="25"
+                             Spacing="20"
+                             IsVisible="{Binding IsCalculated}">
+            <Label Text="YOUR BMI"
+                   FontAttributes="Bold"
+                   />
+            <Label Text="{Binding Bmi}"
+                   FontSize="50"
+                   FontAttributes="Bold"
+                   TextColor="#e95263"/>
+            <Label Text="{Binding BmiStatus}" 
+                   TextColor="{Binding StatusColor}"
+                   FontSize="18"/>
         </VerticalStackLayout>
     </Grid>
 
