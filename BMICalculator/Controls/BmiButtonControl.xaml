@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BMICalculator.Controls.BmiButtonControl">
+
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <ImageButton
+                Source="{TemplateBinding IconImageSource}"
+                HeightRequest="{OnPlatform 150, iOS=120}"
+                WidthRequest="{OnPlatform 150, iOS=120}"
+                CornerRadius="{OnPlatform 55, iOS=60}"
+                BackgroundColor="White"
+                Padding="20"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                         Pressed="Button_Pressed"
+                             >
+                <ImageButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0, -75, 0, 0"/>
+                        <On Platform="iOS" Value="0, -60, 20, 0"/>
+                    </OnPlatform>
+                </ImageButton.Margin>
+
+                <ImageButton.Shadow>
+                    <Shadow Brush="#f2a59e"
+                        Radius="{OnPlatform 55, iOS=60}"
+                        Offset="5, 5"/>
+                </ImageButton.Shadow>
+
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#e95263" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+
+</ContentView>

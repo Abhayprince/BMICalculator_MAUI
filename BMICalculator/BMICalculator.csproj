@@ -49,6 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="NewFolder\**" />
+	  <Compile Remove="NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
+	  <MauiCss Remove="NewFolder\**" />
+	  <MauiXaml Remove="NewFolder\**" />
+	  <None Remove="NewFolder\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\female.svg" />
 	  <None Remove="Resources\Images\male.svg" />
 	  <None Remove="Resources\Images\reset.svg" />
@@ -58,6 +67,15 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\BmiButtonControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\GenderControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
