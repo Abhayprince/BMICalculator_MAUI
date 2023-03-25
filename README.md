@@ -1,6 +1,6 @@
 # BMICalculator_MAUI - BMI Calculator Mini Project in .Net MAUI
 
-![BlazingChat](https://github.com/Abhayprince/BlazingChat/blob/master/Blazing-Chat-Final.png)
+![BMICalculator .NET MAUI](https://raw.githubusercontent.com/Abhayprince/BMICalculator_MAUI/master/BMI%20Calculator.png)
 
 ---------------------------------------
 ## Live Coding Video Series of BMICalculator_MAUI
